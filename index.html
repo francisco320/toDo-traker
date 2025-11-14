@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo Traker - Ejemplo Tailwind (dist)</title>
+    <link rel="stylesheet" href="dist/output.css" />
+  </head>
+  <body class="bg-gray-100">
+    <nav
+      class="flex justify-around p-3 bg-white shadow font-serif items-baseline font-medium"
+    >
+      <!--barra de navegacion-->
+      <ul class="nav-bar flex gap-4 items-baseline">
+        <a class="font-black text-2xl text-blue-950 font-sans mr-2" href="#"
+          ><i>📑</i>Aora</a
+        >
+        <a class="hover:text-blue-500 hover:font-bold" href="#">Inicio</a>
+        <a class="hover:text-blue-500 hover:font-bold" href="#">Tareas</a>
+        <a class="hover:text-blue-500 hover:font-bold" href="#">Habitos </a>
+        <a class="hover:text-blue-500 hover:font-bold" href="#">Calendarios</a>
+      </ul>
+
+      <div class="nav-rigth flex gap-4">
+        <!--barra del lado derecho-->
+        <div class="search-container">
+          <i class="search-icon">🔍</i>
+          <input type="search" placeholder="Buscar..." />
+        </div>
+        <button
+          class="bg-blue-400 p-2 text-gray-200 rounded hover:bg-blue-300 hover:text-white hover:scale-x-105 font-semibold text-xs"
+        >
+          Perfil
+        </button>
+      </div>
+    </nav>
+    <header class="flex max-w-4xl flex-col items-start mx-auto gap-8">
+      <div class="flex w-full justify-between items-center">
+        <h1 class="text-3xl">Mis tareas</h1>
+        <button
+          class="rounded-md p-4 py-2.5 bg-gray-300 hover:bg-gray-400 font-semibold"
+        >
+          Nueva
+        </button>
+      </div>
+      <div class="flex gap-4">
+        <select
+          class="bg-blue-300 rounded-md p-4 py-2"
+          name="Estado"
+          id="Estado"
+          defaultValue="Estado"
+        >
+          <option value="Completado">Completado</option>
+          <option value="Pendiente">Pendiente</option>
+        </select>
+
+        <select
+          class="bg-blue-300 rounded-md p-4 py-2"
+          name="Prioridad"
+          id="Prioridad"
+          defaultValue="Prioridad"
+        >
+          <option value="baja">Baja</option>
+          <option value="media">Media</option>
+          <option value="alta">Alta</option>
+        </select>
+      </div>
+    </header>
+  </body>
+</html>
