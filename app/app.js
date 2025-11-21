@@ -6,17 +6,23 @@ const priority = document.getElementById("Prioridad");
 const btnAdd = document.querySelector(".addBtn");
 
 const task = [];
-const newTask = {
-  nameTask: taskNew.textContent,
-  date: dayTask.textContent,
-  priority: priority.textContent,
-  status: "pendiente",
-};
+
 function addNewTask() {
-  return task.push(newTask);
+  task.push({
+    nameTask: taskNew.value,
+    date: dayTask.value,
+    priority: priority.value,
+    status: "pendiente",
+  });
+  //limpiar datos
+  taskNew.value = "";
+  dayTask.value = "";
+  priority.value = "";
 }
+
 btnAdd.addEventListener("click", () => {
   addNewTask();
+
   console.log(task);
 });
 
