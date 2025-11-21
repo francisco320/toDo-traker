@@ -14,28 +14,34 @@ function addNewTask() {
     priority: priority.value,
     status: "pendiente",
   });
+
+  renderTask();
+
   //limpiar datos
   taskNew.value = "";
   dayTask.value = "";
   priority.value = "";
-  renderTask();
 }
 
 function renderTask() {
   const taskBody = document.getElementById("task-body");
-  taskBody.innerHTML = task.map((t) => {
-    `<tr>
+  taskBody.innerHTML = task
+    .map(
+      (t) =>
+        `<tr>
   <td>${t.nameTask}</td>
   <td>${t.date}</td>
   <td>${t.priority}</td>
   <td>${t.status}</td>
-  </tr>`;
-  });
+  </tr>`
+    )
+    .join("");
+  console.log(taskBody.innerHTML);
 }
 
 btnAdd.addEventListener("click", () => {
   addNewTask();
-
+  renderTask();
   console.log(task);
 });
 
