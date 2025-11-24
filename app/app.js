@@ -28,11 +28,11 @@ function renderTask() {
   taskBody.innerHTML = task
     .map(
       (t) =>
-        `<tr>
-  <td>${t.nameTask}</td>
-  <td>${t.date}</td>
-  <td>${t.priority}</td>
-  <td>${t.status}</td>
+        `<tr class="border-t">
+  <td class="p-2">${t.nameTask}</td>
+  <td class="p-2">${t.date}</td>
+  <td class="p-2">${t.priority}</td>
+  <td class="p-2">${t.status}</td>
   </tr>`
     )
     .join("");
