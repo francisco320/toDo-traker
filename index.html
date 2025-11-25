@@ -89,6 +89,33 @@
             Add
           </button>
         </dialog>
+        <dialog
+          id="editDialog"
+          class="p-6 rounded-lg shadow-lg w-96 bg-white backdrop:bg-black/50"
+        >
+          <form method="dialog" id="editForm" class="flex flex-col gap-4">
+            <h2 class="text-xl font-bold">Editar tarea</h2>
+            <input type="text" id="editName" class="border p-2 rounded" />
+            <input type="date" id="editDate" class="border p-2 rounded" />
+            <select id="editPriority" class="border p-2 rounded">
+              <option value="alta">Alta</option>
+              <option value="media">Media</option>
+              <option value="baja">Baja</option>
+            </select>
+            <menu class="flex gap-4">
+              <button value="cancel" class="px-4 py-2 bg-gray-300 rounded">
+                Cancelar
+              </button>
+              <button
+                class="px-4 py-2 bg-blue-400 rounded"
+                id="saveEdit"
+                value="default"
+              >
+                Guardar
+              </button>
+            </menu>
+          </form>
+        </dialog>
       </div>
       <div class="flex gap-4">
         <select
