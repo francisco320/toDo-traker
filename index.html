@@ -79,9 +79,21 @@
             id="Prioridad"
           >
             <option value="">--elige una opcion--</option>
-            <option value="Alta">Alta</option>
-            <option value="Media">Media</option>
-            <option value="Baja">Baja</option>
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+          </select>
+          <select
+            class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+            name="categoria"
+            id="categoria"
+          >
+            <option value="">--elige una opcion--</option>
+            <option value="idea">Idea</option>
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="Education">Education</option>
+            <option value="task">Task</option>
           </select>
           <button
             class="addBtn mx-auto w-3/5 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
@@ -102,6 +114,18 @@
               <option value="media">Media</option>
               <option value="baja">Baja</option>
             </select>
+            <select
+              class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              name="categoria"
+              id="editCategoria"
+            >
+              <option value="">--elige una opcion--</option>
+              <option value="alta">Idea</option>
+              <option value="media">Work</option>
+              <option value="baja">Personal</option>
+              <option value="baja">Education</option>
+              <option value="baja">Task</option>
+            </select>
             <menu class="flex gap-4">
               <button value="cancel" class="px-4 py-2 bg-gray-300 rounded">
                 Cancelar
@@ -117,26 +141,39 @@
           </form>
         </dialog>
       </div>
-      <div class="flex gap-4">
+      <div id="filterTask" class="flex gap-4">
         <select
-          class="bg-blue-300 rounded-md p-4 py-2"
+          class="statusFilter bg-blue-300 rounded-md p-4 py-2"
           name="Estado"
           id="Estado"
           defaultValue="Estado"
         >
-          <option value="Completado">Completado</option>
-          <option value="Pendiente">Pendiente</option>
+          <option value="all">all</option>
+          <option value="completado">Completado</option>
+          <option value="pendiente">Pendiente</option>
         </select>
 
         <select
-          class="bg-blue-300 rounded-md p-4 py-2"
+          class="priorityFilter bg-blue-300 rounded-md p-4 py-2"
           name="Prioridad"
-          id="Prioridad"
+          id="filter-priority"
           defaultValue="Prioridad"
         >
+          <option value="all">all</option>
           <option value="baja">Baja</option>
           <option value="media">Media</option>
           <option value="alta">Alta</option>
+        </select>
+        <select
+          class="category block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+          name="categoria"
+        >
+          <option value="">--elige una opcion--</option>
+          <option value="alta">Idea</option>
+          <option value="media">Work</option>
+          <option value="baja">Personal</option>
+          <option value="baja">Education</option>
+          <option value="baja">Task</option>
         </select>
       </div>
     </header>
@@ -151,6 +188,7 @@
             <th class="p-2 text-left table-cell">Tarea</th>
             <th class="p-2 text-left table-cell">Fecha</th>
             <th class="p-2 text-left table-cell">Prioridad</th>
+            <th class="p-2 text-left table-cell">categoria</th>
             <th class="p-2 text-left table-cell">Estado</th>
             <th class="p-2 text-left table-cell">Acciones</th>
           </tr>

@@ -6,24 +6,28 @@ import {
   task,
 } from "./modules/taskManager.js";
 import { renderTask } from "./modules/ui.js";
-import { saveTasks, loadTasks } from "./modules/storage.js";
+import { taskFiltered } from "./modules/taskManager.js";
+import { saveTasks } from "./modules/storage.js";
 
 const taskNew = document.getElementById("tarea");
 const dayTask = document.getElementById("date-js");
 const priority = document.getElementById("Prioridad");
 const btnAdd = document.querySelector(".addBtn");
 const taskBody = document.getElementById("task-body");
+const btnFilter = document.getElementById("filterTask");
+const category = document.getElementById("categoria");
 
 //agregar
 btnAdd.addEventListener("click", () => {
-  addNewTask(taskNew.value, dayTask.value, priority.value);
+  addNewTask(taskNew.value, dayTask.value, priority.value, category.value);
 
-  renderTask(taskBody);
+  renderTask(taskBody, task);
 
   //limpiar datos
   taskNew.value = "";
   dayTask.value = "";
   priority.value = "";
+  category.value = "";
 });
 
 //editar y eliminar
@@ -35,7 +39,7 @@ taskBody.addEventListener("click", (e) => {
 
   if (e.target.classList.contains("btn-delete")) {
     deleteTask(index);
-    renderTask(taskBody);
+    renderTask(taskBody, task);
   }
 
   if (e.target.classList.contains("btn-edit")) {
@@ -45,13 +49,13 @@ taskBody.addEventListener("click", (e) => {
     editPriority.value = task[index].priority;
     editDialog.showModal();
   }
-  if (e.target.checked) {
-    task[index].status = "completado";
-    row.classList.add("line-through");
-    renderTask(taskBody);
-    if (task.status === "completado") {
-      row.classList.add("line-through"); // ✅ Se aplica la clase de tachado
-    }
+  if (e.target.classList.contains("checked-js")) {
+    const checkIndex = index;
+    task[checkIndex].status = e.target.checked ? "completado" : "pendiente";
+
+    renderTask(taskBody, task);
+    saveTasks(task);
+    console.log("estado actualizado:", task[index].status);
   }
 });
 
@@ -66,12 +70,23 @@ saveEdit.addEventListener("click", (e) => {
       priority: editPriority.value,
       status: "pendiente",
     });
-    renderTask(taskBody);
+    renderTask(taskBody, task);
     editDialog.close();
   }
 });
 
+//filtrado de elementos por status y prioridad
+btnFilter.addEventListener("change", (e) => {
+  const filteredPriority = document.querySelector(".priorityFilter").value;
+  const statusFiltered = document.querySelector(".statusFilter").value;
+
+  const filterAplied = taskFiltered(filteredPriority, statusFiltered);
+
+  renderTask(taskBody, filterAplied);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   openAndClose();
-  renderTask(taskBody);
+
+  renderTask(taskBody, task);
 });
