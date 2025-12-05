@@ -7,84 +7,22 @@
     <link rel="stylesheet" href="dist/output.css" />
   </head>
   <body class="bg-gray-100">
-    <nav
-      class="flex justify-around p-3 bg-white shadow font-serif items-baseline font-medium"
-    >
-      <!--barra de navegacion-->
-      <ul class="nav-bar flex gap-4 items-baseline">
+    <main class="container">
+      <div class="encabezado w-full flex gap-4 justify-evenly">
         <a
-          class="w-16 font-black text-2xl text-blue-950 font-sans mr-2"
+          class="w-[200px] flex justify-center font-black text-blue-950 font-sans mr-2"
           href="#"
           ><img
-            class="max-w-full w-fit h-auto object-cover"
+            class="max-w-full w-full h-auto object-cover"
             src="assets/logo.png"
             alt="logo"
-        /></a>
-        <a class="hover:text-blue-500 hover:font-bold" href="#">Inicio</a>
-        <a class="hover:text-blue-500 hover:font-bold" href="#">Tareas</a>
-        <a class="hover:text-blue-500 hover:font-bold" href="#">Habitos </a>
-        <a class="hover:text-blue-500 hover:font-bold" href="#">Calendarios</a>
-      </ul>
+          />
+          <h1>Notes app</h1></a
+        >
 
-      <div class="nav-rigth flex gap-4">
-        <!--barra del lado derecho-->
-        <div class="search-container relative">
-          <i class="search-icon absolute right-0 hover:cursor-pointer">🔍</i>
-          <input type="search" placeholder="Buscar..." />
-        </div>
-        <button
-          class="bg-blue-400 p-2 text-gray-200 rounded hover:bg-blue-300 hover:text-white hover:scale-x-105 font-semibold text-xs"
-        >
-          Perfil
-        </button>
-      </div>
-    </nav>
-    <header class="flex mt-10 max-w-4xl flex-col items-start mx-auto gap-8">
-      <div class="flex w-full justify-between items-center">
-        <h1 class="text-3xl">Mis tareas</h1>
-        <button
-          id="open"
-          class="rounded-md p-4 py-2.5 bg-gray-300 hover:bg-gray-400 font-semibold"
-        >
-          Nueva
-        </button>
-        <dialog
-          id="modal"
-          class="p-6 mt-16 rounded-lg shadow-lg w-96 bg-white backdrop:bg-black/50 mx-auto"
-        >
-          <div class="flex justify-between items-baseline">
-            <h1 class="text-xl font-bold mb-4">Nueva tarea</h1>
-            <button
-              class="close py-1 px-2 bg-red-500 text-white rounded hover:bg-red-600"
-            >
-              x
-            </button>
-          </div>
-          <input
-            class="block w-full px-3 py-2 mb-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-500"
-            type="text"
-            name="tarea"
-            id="tarea"
-            placeholder="nueva"
-          />
-          <input
-            class="block w-full px-3 py-2 mb-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 bg-white"
-            type="date"
-            id="date-js"
-          />
-          <label for="Prioridad">Prioridad</label>
+        <div class="inputs flex gap-4">
           <select
-            class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
-            name="Prioridad"
-            id="Prioridad"
-          >
-            <option value="">--elige una opcion--</option>
-            <option value="alta">Alta</option>
-            <option value="media">Media</option>
-            <option value="baja">Baja</option>
-          </select>
-          <select
-            class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+            class="block px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
             name="categoria"
             id="categoria"
           >
@@ -95,21 +33,50 @@
             <option value="Education">Education</option>
             <option value="task">Task</option>
           </select>
+          <input type="search" placeholder="search notes" />
           <button
-            class="addBtn mx-auto w-3/5 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            id="open"
+            class="rounded-md p-4 py-2.5 bg-gray-300 hover:bg-gray-400 font-semibold"
           >
-            Add
+            Nueva
           </button>
-        </dialog>
-        <dialog
-          id="editDialog"
-          class="p-6 rounded-lg shadow-lg w-96 bg-white backdrop:bg-black/50"
-        >
-          <form method="dialog" id="editForm" class="flex flex-col gap-4">
-            <h2 class="text-xl font-bold">Editar tarea</h2>
-            <input type="text" id="editName" class="border p-2 rounded" />
-            <input type="date" id="editDate" class="border p-2 rounded" />
-            <select id="editPriority" class="border p-2 rounded">
+          <dialog
+            id="modal"
+            class="p-6 mt-16 rounded-lg shadow-lg w-96 bg-white backdrop:bg-black/50 mx-auto"
+          >
+            <div class="flex justify-between items-baseline">
+              <h1 class="text-xl font-bold mb-4">Nueva tarea</h1>
+              <button
+                class="close py-1 px-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                x
+              </button>
+            </div>
+            <input
+              class="block w-full px-3 py-2 mb-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-500"
+              type="text"
+              name="tarea"
+              id="tarea"
+              placeholder="nueva"
+            />
+            <textarea
+              class="block w-full px-3 py-2 mb-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-500"
+              id="description"
+              placeholder="new note"
+            >
+            </textarea>
+            <input
+              class="block w-full px-3 py-2 mb-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 bg-white"
+              type="date"
+              id="date-js"
+            />
+            <label for="Prioridad">Prioridad</label>
+            <select
+              class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              name="Prioridad"
+              id="Prioridad"
+            >
+              <option value="">--elige una opcion--</option>
               <option value="alta">Alta</option>
               <option value="media">Media</option>
               <option value="baja">Baja</option>
@@ -117,84 +84,28 @@
             <select
               class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
               name="categoria"
-              id="editCategoria"
+              id="categoria"
             >
               <option value="">--elige una opcion--</option>
-              <option value="alta">Idea</option>
-              <option value="media">Work</option>
-              <option value="baja">Personal</option>
-              <option value="baja">Education</option>
-              <option value="baja">Task</option>
+              <option value="idea">Idea</option>
+              <option value="work">Work</option>
+              <option value="personal">Personal</option>
+              <option value="Education">Education</option>
+              <option value="task">Task</option>
             </select>
-            <menu class="flex gap-4">
-              <button value="cancel" class="px-4 py-2 bg-gray-300 rounded">
-                Cancelar
-              </button>
-              <button
-                class="px-4 py-2 bg-blue-400 rounded"
-                id="saveEdit"
-                value="default"
-              >
-                Guardar
-              </button>
-            </menu>
-          </form>
-        </dialog>
-      </div>
-      <div id="filterTask" class="flex gap-4">
-        <select
-          class="statusFilter bg-blue-300 rounded-md p-4 py-2"
-          name="Estado"
-          id="Estado"
-          defaultValue="Estado"
-        >
-          <option value="all">all</option>
-          <option value="completado">Completado</option>
-          <option value="pendiente">Pendiente</option>
-        </select>
 
-        <select
-          class="priorityFilter bg-blue-300 rounded-md p-4 py-2"
-          name="Prioridad"
-          id="filter-priority"
-          defaultValue="Prioridad"
-        >
-          <option value="all">all</option>
-          <option value="baja">Baja</option>
-          <option value="media">Media</option>
-          <option value="alta">Alta</option>
-        </select>
-        <select
-          class="category block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
-          name="categoria"
-        >
-          <option value="">--elige una opcion--</option>
-          <option value="alta">Idea</option>
-          <option value="media">Work</option>
-          <option value="baja">Personal</option>
-          <option value="baja">Education</option>
-          <option value="baja">Task</option>
-        </select>
+            <button
+              class="addBtn mx-auto w-3/5 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            >
+              Add
+            </button>
+          </dialog>
+        </div>
       </div>
-    </header>
-    <main class="max-w-4xl mx-auto mt-8 border rounded-md overflow-hidden">
-      <!--cuadro de barras de tarea-->
-      <table class="w-full table table-auto border-collapse">
-        <thead class="table-header-group bg-green-800">
-          <tr>
-            <th class="p-2 text-left table-cell">
-              <input type="checkbox" name="" id="" />
-            </th>
-            <th class="p-2 text-left table-cell">Tarea</th>
-            <th class="p-2 text-left table-cell">Fecha</th>
-            <th class="p-2 text-left table-cell">Prioridad</th>
-            <th class="p-2 text-left table-cell">categoria</th>
-            <th class="p-2 text-left table-cell">Estado</th>
-            <th class="p-2 text-left table-cell">Acciones</th>
-          </tr>
-        </thead>
-        <tbody id="task-body"></tbody>
-      </table>
+      <section
+        id="container-note"
+        class="container-note grid grid-cols-3 grid-rows-[260px] gap-7 max-w-full p-8"
+      ></section>
     </main>
   </body>
   <script type="module" src="app/app.js"></script>

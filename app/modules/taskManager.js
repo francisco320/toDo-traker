@@ -2,13 +2,13 @@ import { loadTasks, saveTasks } from "./storage.js";
 
 export const task = loadTasks();
 
-export function addNewTask(name, date, priority, category) {
+export function addNewTask(name, date, priority, category, description) {
   task.push({
     nameTask: name,
     date,
     priority,
     category,
-    status: "pendiente",
+    description,
   });
   saveTasks(task);
   console.log(task);
