@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="dist/output.css" />
   </head>
   <body class="bg-gray-100">
-    <main class="container">
+    <main class="container p-4">
       <div class="encabezado w-full flex gap-4 justify-evenly">
         <a
           class="w-[200px] flex justify-center font-black text-blue-950 font-sans mr-2"
@@ -81,8 +81,9 @@
               <option value="media">Media</option>
               <option value="baja">Baja</option>
             </select>
+            <label for="Prioridad">Categoria</label>
             <select
-              class="block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+              class="categoria block w-full px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
               name="categoria"
               id="categoria"
             >
@@ -104,7 +105,7 @@
       </div>
       <section
         id="container-note"
-        class="container-note grid grid-cols-3 grid-rows-[260px] gap-7 max-w-full p-8"
+        class="columns-2 md:columns-3 gap-6 p-4"
       ></section>
     </main>
   </body>

@@ -12,6 +12,7 @@ export function addNewTask(name, date, priority, category, description) {
   });
   saveTasks(task);
   console.log(task);
+  console.log("la categoria es:", category);
 }
 
 export function deleteTask(index) {

@@ -15,7 +15,7 @@ const priority = document.getElementById("Prioridad");
 const btnAdd = document.querySelector(".addBtn");
 const noteContainer = document.getElementById("container-note");
 const btnFilter = document.getElementById("filterTask");
-const category = document.getElementById("categoria");
+const category = document.querySelector(".categoria");
 const description = document.getElementById("description");
 
 //agregar
@@ -27,7 +27,7 @@ btnAdd.addEventListener("click", () => {
     category.value,
     description.value
   );
-
+  console.log(category.value);
   renderTask(noteContainer, task);
 
   //limpiar datos
@@ -42,9 +42,9 @@ btnAdd.addEventListener("click", () => {
 noteContainer.addEventListener("click", (e) => {
   const row = e.target.closest("article");
   if (!row) return;
-  const index = row.dataset.index;
-
-  if (e.target.classList.contains("btn-delete")) {
+  const deleteBtn = e.target.closest(".btn-delete");
+  if (deleteBtn) {
+    const index = row.dataset.index;
     deleteTask(index);
     renderTask(noteContainer, task);
   }
