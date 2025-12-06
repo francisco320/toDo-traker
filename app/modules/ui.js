@@ -1,15 +1,15 @@
 const CATEGORY_COLORS = {
+  //mapeo de categorias
   personal: "bg-yellow-300 text-yellow-800",
   work: "bg-blue-300 text-blue-800",
   task: "bg-red-300 text-red-800",
   idea: "bg-purple-300 text-purple-800",
   education: "bg-green-300 text-green-800",
-  // ¡Añade más categorías aquí!
 };
 
 const DEFAULT_COLOR_CLASS = "bg-gray-300 text-gray-800";
 
-function getColorClasses(category) {
+export function getColorClasses(category) {
   return CATEGORY_COLORS[category] || DEFAULT_COLOR_CLASS;
 }
 

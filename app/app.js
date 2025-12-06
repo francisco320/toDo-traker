@@ -6,7 +6,7 @@ import {
   task,
 } from "./modules/taskManager.js";
 import { renderTask } from "./modules/ui.js";
-import { taskFiltered } from "./modules/taskManager.js";
+import { viewModal, modal, renderUpdate } from "./modules/modalNote.js";
 import { saveTasks } from "./modules/storage.js";
 
 const taskNew = document.getElementById("tarea");
@@ -37,7 +37,7 @@ btnAdd.addEventListener("click", () => {
   category.value = "";
 });
 
-//editar y eliminar
+//eliminar y abrir vista ampliada
 
 noteContainer.addEventListener("click", (e) => {
   const row = e.target.closest("article");
@@ -49,20 +49,43 @@ noteContainer.addEventListener("click", (e) => {
     renderTask(noteContainer, task);
   }
 
-  if (e.target.classList.contains("btn-edit")) {
-    editIndex = index;
-    editName.value = task[index].nameTask;
-    editDate.value = task[index].date;
-    editPriority.value = task[index].priority;
-    editDialog.showModal();
+  if (e.target.classList.contains("note")) {
+    let showNote = row.dataset.index;
+    if (showNote) {
+      let viewNote = task[showNote];
+      viewModal(showNote, viewNote);
+    }
   }
-  if (e.target.classList.contains("checked-js")) {
-    const checkIndex = index;
-    task[checkIndex].status = e.target.checked ? "completado" : "pendiente";
+});
 
-    renderTask(noteContainer, task);
-    saveTasks(task);
-    console.log("estado actualizado:", task[index].status);
+modal.addEventListener("click", (e) => {
+  const noteEdit = e.target.closest("button");
+  if (e.target.classList.contains("edit-note-btn")) {
+    const index = noteEdit.dataset.index;
+    const editTask = task[index];
+    renderUpdate(index, editTask);
+  }
+  let editIndex = null;
+  if (e.target.classList.contains("save-note-btn")) {
+    //variables para editar task
+    const tag = document.getElementById("editTag");
+    const nameEdit = document.getElementById("editName");
+    const descripEdit = document.getElementById("editDescrip");
+    const editPrio = document.getElementById("editPrio");
+    const dateEdit = document.getElementById("editDate");
+    editIndex = noteEdit.dataset.index;
+
+    if (editIndex !== null) {
+      updateTask(editIndex, {
+        nameTask: nameEdit.value,
+        date: dateEdit.value,
+        priority: editPrio.value,
+        category: tag.value,
+        description: descripEdit.value,
+      });
+      renderTask(noteContainer, task);
+      modal.close();
+    }
   }
 });
 

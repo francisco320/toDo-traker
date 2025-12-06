@@ -25,21 +25,16 @@ export function updateTask(index, data) {
   saveTasks(task);
 }
 
-export function taskFiltered(selectPriority, statusSelect) {
+export function taskFiltered(selectCategory) {
   let filterStatusPriority = task;
 
   if (selectPriority !== "all") {
     filterStatusPriority = filterStatusPriority.filter(
-      (t) => t.priority === selectPriority
+      (t) => t.category === selectCategory
     );
-    console.log(selectPriority);
+    console.log(selectCategory);
   }
 
-  if (statusSelect !== "all") {
-    filterStatusPriority = filterStatusPriority.filter(
-      (t) => t.status === statusSelect
-    );
-  }
   console.log(filterStatusPriority);
   return filterStatusPriority;
 }
