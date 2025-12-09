@@ -37,6 +37,7 @@ btnAdd.addEventListener("click", () => {
   dayTask.value = "";
   priority.value = "";
   category.value = "";
+  description.value = "";
 });
 
 //eliminar y abrir vista ampliada
@@ -60,6 +61,7 @@ noteContainer.addEventListener("click", (e) => {
   }
 });
 
+// editar y guardar cambios de nota
 modal.addEventListener("click", (e) => {
   const noteEdit = e.target.closest("button");
   if (e.target.classList.contains("edit-note-btn")) {
@@ -102,7 +104,7 @@ btnFilter.addEventListener("change", () => {
     renderTask(noteContainer, task);
   }
 });
-
+//busqueda lineal
 search.addEventListener("input", () => {
   const matchNotes = search.value;
   if (matchNotes !== "") {
