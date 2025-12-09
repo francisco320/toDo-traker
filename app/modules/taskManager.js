@@ -26,15 +26,27 @@ export function updateTask(index, data) {
 }
 
 export function taskFiltered(selectCategory) {
-  let filterStatusPriority = task;
+  let filterCategory = task;
 
-  if (selectPriority !== "all") {
-    filterStatusPriority = filterStatusPriority.filter(
+  if (selectCategory !== "all") {
+    filterCategory = filterCategory.filter(
       (t) => t.category === selectCategory
     );
     console.log(selectCategory);
   }
+  console.log(filterCategory);
+  return filterCategory;
+}
 
-  console.log(filterStatusPriority);
-  return filterStatusPriority;
+export function SearchMatch(matched) {
+  const searchKey = matched ? matched.toLowerCase() : "";
+  if (searchKey === "") {
+    return task;
+  }
+  const searchNotes = task.filter((search) => {
+    const findMatch = search.nameTask ? search.nameTask.toLowerCase() : "";
+    console.log(findMatch);
+    return findMatch.startsWith(searchKey);
+  });
+  return searchNotes;
 }

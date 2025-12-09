@@ -20,7 +20,7 @@ export function renderTask(taskBody, addTask) {
         const tagClasses = getColorClasses(t.category);
 
         return `<article
-          class="note bg-white p-6 rounded-lg shadow-md text-left flex flex-col justify-around break-inside-avoid mb-6"
+          class="note bg-white p-4 rounded-lg shadow-md text-left flex flex-col gap-4 justify-around break-inside-avoid mb-6 "
           data-index=${index}>
           <span
           class="tag w-fit text-center p-1 rounded-lg text-[0.9rem] font-medium
@@ -29,13 +29,13 @@ export function renderTask(taskBody, addTask) {
           </span>
           <h2 class="text-2xl font-black font-sans">${t.nameTask}</h2>
           <p
-          class="text-gray-600 font-normal "
+          class="text-gray-600 font-normal sm:line-clamp-3 "
           >
           ${t.description}</p>
           <div class="footer-info flex gap-2 w-full">
-          <span>${t.priority}</span>
+          <span>Prioridad: ${t.priority}</span>
           <span> - ${t.date}</span>
-          <button class="btn-delete ml-auto place-self-end pointer ">
+          <button class="btn-delete ml-auto place-self-end cursor-pointer ">
           <img
           class="place-self-end "
           src="assets/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"

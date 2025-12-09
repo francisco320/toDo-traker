@@ -4,10 +4,11 @@ import {
   deleteTask,
   updateTask,
   task,
+  taskFiltered,
+  SearchMatch,
 } from "./modules/taskManager.js";
 import { renderTask } from "./modules/ui.js";
 import { viewModal, modal, renderUpdate } from "./modules/modalNote.js";
-import { saveTasks } from "./modules/storage.js";
 
 const taskNew = document.getElementById("tarea");
 const dayTask = document.getElementById("date-js");
@@ -17,6 +18,7 @@ const noteContainer = document.getElementById("container-note");
 const btnFilter = document.getElementById("filterTask");
 const category = document.querySelector(".categoria");
 const description = document.getElementById("description");
+const search = document.querySelector(".search");
 
 //agregar
 btnAdd.addEventListener("click", () => {
@@ -89,31 +91,29 @@ modal.addEventListener("click", (e) => {
   }
 });
 
-/*let editIndex = null;
+//filtrado de elementos por categoria
+btnFilter.addEventListener("change", () => {
+  const filteredcategory = document.querySelector(".categoryFilter").value;
+  if (filteredcategory !== "all") {
+    const filterAplied = taskFiltered(filteredcategory);
 
-saveEdit.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (editIndex !== null) {
-    updateTask(editIndex, {
-      nameTask: editName.value,
-      date: editDate.value,
-      priority: editPriority.value,
-      status: "pendiente",
-    });
+    renderTask(noteContainer, filterAplied);
+  } else {
     renderTask(noteContainer, task);
-    editDialog.close();
   }
 });
 
-//filtrado de elementos por status y prioridad
-btnFilter.addEventListener("change", (e) => {
-  const filteredPriority = document.querySelector(".priorityFilter").value;
-  const statusFiltered = document.querySelector(".statusFilter").value;
-
-  const filterAplied = taskFiltered(filteredPriority, statusFiltered);
-
-  renderTask(noteContainer, filterAplied);
-});*/
+search.addEventListener("input", () => {
+  const matchNotes = search.value;
+  if (matchNotes !== "") {
+    const searchNote = SearchMatch(matchNotes);
+    renderTask(noteContainer, searchNote);
+    console.log("esta es lo que buscas", matchNotes);
+    console.log("y este es el filtrado:", searchNote);
+  } else {
+    renderTask(noteContainer, task);
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   openAndClose();

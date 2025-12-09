@@ -3,42 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ToDo Traker - Ejemplo Tailwind (dist)</title>
+    <title>Aora Notes app || Free Your Ideas.</title>
     <link rel="stylesheet" href="dist/output.css" />
   </head>
   <body class="bg-gray-100">
     <main class="container p-4">
-      <div class="encabezado w-full flex gap-4 justify-evenly">
+      <div class="encabezado w-full flex flex-col  p-4 gap-3  justify-evenly">
         <a
-          class="w-[200px] flex justify-center font-black text-blue-950 font-sans mr-2"
+          class="w-[200px] flex justify-center items-center font-black text-blue-950 font-sans mr-2"
           href="#"
           ><img
             class="max-w-full w-full h-auto object-cover"
             src="assets/logo.png"
             alt="logo"
           />
-          <h1>Notes app</h1></a
+          <h1 class="text-xs text-blue-900 text-shadow-2xs">Notes app</h1></a
         >
 
-        <div class="inputs flex gap-4">
+        <div class="inputs  flex flex-col md:flex-row gap-4 ">
           <select
-            class="block px-3 py-2 mb-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
+            class="categoryFilter max-w-full md:w-1/3   px-4 py-2  border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700"
             name="categoria"
             id="filterTask"
           >
-            <option value="">--elige una opcion--</option>
+            <option value="all">--all--</option>
             <option value="idea">Idea</option>
             <option value="work">Work</option>
             <option value="personal">Personal</option>
             <option value="Education">Education</option>
             <option value="task">Task</option>
           </select>
-          <input type="search" placeholder="search notes" />
+          <div class=" relative md:w-1/3">
+            <img class="absolute right-2 top-2.5 max-w-max object-contain h-auto" src="assets/search_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="search">
+            <input class=" search w-full  px-4 py-2  border border-gray-300 bg-red-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700" type="search" placeholder="search notes" />
+          </div>
           <button
             id="open"
-            class="rounded-md p-4 py-2.5 bg-gray-300 hover:bg-gray-400 font-semibold"
-          >
-            Nueva
+            class="flex rounded-md md:w-1/3  p-4 py-2 bg-green-800 text-white gap-4 font-semibold shadow cursor-pointer"
+          ><img src="assets/add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="add">
+            Crear nueva nota
           </button>
           <dialog
             id="modal"
@@ -105,7 +108,7 @@
       </div>
       <section
         id="container-note"
-        class="columns-2 md:columns-3 gap-6 p-4"
+        class="columns-1 md:columns-3 gap-6 p-4"
       ></section>
       <dialog id="vista-nota" class="mt-16 rounded-lg w-96 bg-white mx-auto">
        </article>
